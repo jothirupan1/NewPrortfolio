@@ -1,0 +1,64 @@
+.login {
+  max-width: 320px;
+  background: rgba(25, 25, 25, 0.9); /* dark glass effect */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.hader {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hader p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #b3b3b3;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+form input,
+form textarea {
+  height: 45px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  background: #2c2c2c;
+  color: #fff;
+}
+
+form textarea {
+  resize: none;
+  height: 100px;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: #aaa;
+}
+
+form input[type="submit"] {
+  background: linear-gradient(135deg, #4a00e0, #8e2de2);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+  transform: scale(1.05);
+}

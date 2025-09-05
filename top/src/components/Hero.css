@@ -1,0 +1,56 @@
+  /* The container for the effect */
+
+
+/* The container for the effect */
+.wave-ring img {
+  width: 300px;
+  min-width: 300px;
+  height: auto;
+  border-radius: 50%;
+}
+.wave-ring {
+      width: 300px;
+  min-width: 300px;
+  position: relative; /* Allows us to position the pseudo-element relative to this container */
+  display: inline-block; /* Helps wrap the container around the image */
+  border-radius: 50%; /* Makes the container a circle */
+  overflow: hidden; /* Hides the parts of the animation that go outside the circle */
+}
+
+/* The core of the shimmer effect */
+.wave-ring::after {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute; /* Positions the pseudo-element over the image */
+  top: 50%;
+  left: 50%;
+  width: 150%; /* Larger than the container to ensure it covers it entirely */
+  height: 150%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 60%); /* Creates a soft, white glow */
+  transform: translate(-50%, -50%) scale(0); /* Centers it and makes it invisible initially */
+  animation: wave-pulse 3s infinite ease-out; /* Applies the animation */
+}
+
+/* The animation keyframes */
+@keyframes wave-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .wave-ring img {
+    
+    width: 200px;
+    margin-top: 20px; /* smaller size for mobile */
+  }
+
+
+}
