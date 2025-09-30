@@ -1,36 +1,58 @@
-  /* The container for the effect */
-
-
-/* The container for the effect */
-.wave-ring img {
+/* -----------------------
+   Hero Image
+   ----------------------- */
+.hero-img {
   width: 300px;
   min-width: 300px;
   height: auto;
   border-radius: 50%;
-}
-.wave-ring {
-      width: 300px;
-  min-width: 300px;
-  position: relative; /* Allows us to position the pseudo-element relative to this container */
-  display: inline-block; /* Helps wrap the container around the image */
-  border-radius: 50%; /* Makes the container a circle */
-  overflow: hidden; /* Hides the parts of the animation that go outside the circle */
+  filter: grayscale(100%);
+  transform: scaleX(-1);
+  transition: 0.6s ease-in-out;
 }
 
-/* The core of the shimmer effect */
+/* Color + slight zoom on hover */
+.hero-img:hover {
+  filter: grayscale(0%);
+  transform: scaleX(-1) scale(1.05);
+}
+
+/* -----------------------
+   Wave ring (ripple only on hover, continuous while hovered)
+   ----------------------- */
+.wave-ring {
+  width: 300px;
+  min-width: 300px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .wave-ring::after {
-  content: ''; /* Required for pseudo-elements */
-  position: absolute; /* Positions the pseudo-element over the image */
+  content: "";
+  position: absolute;
   top: 50%;
   left: 50%;
-  width: 150%; /* Larger than the container to ensure it covers it entirely */
+  width: 150%;
   height: 150%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 60%); /* Creates a soft, white glow */
-  transform: translate(-50%, -50%) scale(0); /* Centers it and makes it invisible initially */
-  animation: wave-pulse 3s infinite ease-out; /* Applies the animation */
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.5) 0%,
+    transparent 60%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  opacity: 1;
+  animation: none; /* no animation by default */
 }
 
-/* The animation keyframes */
+/* Start ripple on hover and repeat infinitely */
+.wave-ring:hover::after {
+  animation: wave-pulse 1.5s infinite ease-out;
+}
+
+/* ripple keyframes */
 @keyframes wave-pulse {
   0% {
     transform: translate(-50%, -50%) scale(0);
@@ -45,11 +67,125 @@
   }
 }
 
+/* -----------------------
+   Waving hand (text)
+   ----------------------- */
+.waving-hand {
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* -----------------------
+   Fade-in animations
+   ----------------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+}
+.fade-in.delay-1 { animation-delay: 0.3s; }
+.fade-in.delay-2 { animation-delay: 0.6s; }
+.fade-in.delay-3 { animation-delay: 0.9s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -----------------------
+   Typing effect
+   ----------------------- */
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid black;
+  white-space: nowrap;
+  animation:
+    typing 3.5s steps(30, end) infinite alternate,
+    blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+/* -----------------------
+   Scroll down icon & bounce
+   ----------------------- */
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scroll-down a {
+  font-size: 2rem;
+  color: #000;
+  text-decoration: none;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(10px); }
+  60% { transform: translateY(5px); }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+/* -----------------------
+   Responsive / Mobile
+   ----------------------- */
 @media (max-width: 768px) {
-  .wave-ring img {
-    
-    width: 200px;
-    margin-top: 20px; /* smaller size for mobile */
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* take full height */
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .hero-img {
+    width: 220px;
+    min-width: auto;
+    margin-top: 0;
+  }
+
+  .text-section {
+    margin-top: 1.5rem;
+  }
+
+  .wave-ring {
+    width: 220px;
+    min-width: auto;
+  }
+
+  /* Reduce social icon spacing */
+  .d-flex.justify-content-center.gap-4 {
+    gap: 1.5rem;
   }
 
 

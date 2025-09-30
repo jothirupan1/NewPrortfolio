@@ -11,7 +11,7 @@ function Contact() {
 
     emailjs
       .sendForm(
-        "service_n4gboei",
+        "service_1emgjan",
         "template_wyvy6t6",
         form.current,
         "wb_zWqnKXFodqacS_"
@@ -28,7 +28,9 @@ function Contact() {
     <div id="contact" className="mt-5 pt-5" style={{ minHeight: "100vh" }}>
       <div className="container mt-5">
         <h1 className="text-center">Get in touch</h1>
-        <p className="text-muted text-center mb-5">Would you like to have conversation with me</p>
+        <p className="text-muted text-center mb-5">
+          Would you like to have conversation with me
+        </p>
         <div className="row justify-content-center align-items-center g-4">
           {/* Left side stacked cards */}
           <div className="col-lg-4 d-flex flex-column align-items-center gap-4">
@@ -36,14 +38,20 @@ function Contact() {
               className="card rounded-4 shadow p-4 text-center"
               style={{ width: "14rem", height: "10rem" }}
             >
-              <a href="mailto:jothirupand@gmail.com" className="text-decoration-none">
+              {" "}
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=jothirupand@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none"
+              >
                 <i
                   className="fa-solid fa-envelope fa-bounce fa-2x mb-3"
                   style={{ color: "#000000" }}
                 ></i>
-                <h5 className="fw-bold text-dark">Message me bro</h5>
-                <p className="text-muted small">I’d love to hear from you</p>
-              </a>
+                <h5 className="fw-bold text-dark">Message me</h5>
+                <p className="text-muted small">I’d like to hear from you</p>
+              </a>{" "}
             </div>
 
             <div
@@ -76,7 +84,7 @@ function Contact() {
                 style={{ textDecoration: "none" }}
               >
                 <i
-                  class="fa-brands fa-linkedin fs-bounce fa-2x mb-3 fa-bounce fa-2x mb-3 "
+                  className="fa-brands fa-linkedin fs-bounce fa-2x mb-3 fa-bounce fa-2x mb-3 "
                   style={{ color: "#0077B5" }}
                 ></i>
                 <h4 className="fw-bold text-dark">Linkedin</h4>
@@ -103,32 +111,35 @@ function Contact() {
               >
                 <input
                   type="text"
-                  name="title"
+                  name="title" // matches {{title}}
                   placeholder="Subject"
                   required
                   className="form-control rounded-3 border-0 shadow-sm"
                 />
+
                 <input
                   type="text"
-                  name="name"
+                  name="name" // matches {{name}}
                   placeholder="Your Name"
                   required
                   className="form-control rounded-3 border-0 shadow-sm"
                 />
+
                 <input
                   type="email"
-                  name="email"
+                  name="email" // matches {{email}}
                   placeholder="Your Email"
                   required
                   className="form-control rounded-3 border-0 shadow-sm"
                 />
+
                 <textarea
-                  name="message"
+                  name="message" // matches {{message}}
                   placeholder="Your Message"
                   required
                   className="form-control rounded-3 border-0 shadow-sm"
                   rows="5"
-                ></textarea>
+                />
 
                 <button
                   type="submit"
